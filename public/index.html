@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        WebGIS quản lý ngập lụt Hà Nội
+    </title>
+
+    <!-- Leaflet -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ======================================
+         HEADER
+         ====================================== -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🌊
+            </div>
+
+            <div>
+
+                <h1>
+                    WebGIS ngập lụt Hà Nội
+                </h1>
+
+                <p>
+                    Quản lý, giám sát và hỗ trợ
+                    dự báo nguy cơ ngập
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button id="btnReport" class="report-btn">
+                + Báo ngập
+            </button>
+
+            <button id="btnReload" class="reload-btn">
+                ↻ Cập nhật
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ======================================
+         MAP
+         ====================================== -->
+
+    <div id="map"></div>
+
+
+    <!-- ======================================
+         PANEL
+         ====================================== -->
+
+    <aside class="panel">
+
+        <!-- THỐNG KÊ -->
+
+        <div class="panel-section">
+
+            <h2>
+                Tổng quan
+            </h2>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <span class="stat-label">
+                        Điểm HSDC
+                    </span>
+
+                    <strong id="floodCount" class="stat-number flood-stat">
+                        0
+                    </strong>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <span class="stat-label">
+                        Trạm mưa
+                    </span>
+
+                    <strong id="rainStationCount" class="stat-number rain-stat">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="status-row">
+
+                <span>
+                    Trạng thái dữ liệu
+                </span>
+
+                <strong id="status" class="status status-loading">
+                    Đang tải...
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- LAYERS -->
+
+        <div class="panel-section">
+
+            <h3>
+                Lớp bản đồ
+            </h3>
+
+            <label class="layer-option">
+
+                <div class="layer-info">
+
+                    <span class="
+                            legend-circle
+                            legend-flood
+                        ">
+                        !
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Điểm ngập HSDC
+                        </strong>
+
+                        <small>
+                            Điểm tham chiếu
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <input id="toggleFloodLayer" type="checkbox" checked>
+
+            </label>
+
+
+            <label class="layer-option">
+
+                <div class="layer-info">
+
+                    <span class="
+                            legend-circle
+                            legend-rain
+                        ">
+                        🌧
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Trạm mưa HSDC
+                        </strong>
+
+                        <small>
+                            Vị trí trạm đo mưa
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <input id="toggleRainLayer" type="checkbox" checked>
+
+            </label>
+
+
+            <div class="
+                layer-option
+                layer-disabled
+            ">
+
+                <div class="layer-info">
+
+                    <span class="
+                            legend-circle
+                            legend-risk
+                        ">
+                        %
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Nguy cơ ngập
+                        </strong>
+
+                        <small>
+                            Random Forest
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <span class="coming-soon">
+                    Sắp có
+                </span>
+
+            </div>
+
+
+            <div class="
+                layer-option
+                layer-disabled
+            ">
+
+                <div class="layer-info">
+
+                    <span class="
+                            legend-circle
+                            legend-user
+                        ">
+                        👤
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Báo cáo người dùng
+                        </strong>
+
+                        <small>
+                            Điểm được xác nhận
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <span class="coming-soon">
+                    Sắp có
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NGUỒN -->
+
+        <div class="panel-section source-section">
+
+            <h3>
+                Nguồn dữ liệu
+            </h3>
+
+            <div class="source-item">
+
+                <span>
+                    🔴
+                </span>
+
+                <div>
+                    <strong>
+                        HSDC
+                    </strong>
+
+                    <small>
+                        Điểm ngập tham chiếu
+                        và trạm mưa
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="source-item">
+
+                <span>
+                    🌦
+                </span>
+
+                <div>
+                    <strong>
+                        Open-Meteo
+                    </strong>
+
+                    <small>
+                        Dữ liệu thời tiết
+                        và dự báo mưa
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="source-item">
+
+                <span>
+                    🗺
+                </span>
+
+                <div>
+                    <strong>
+                        Copernicus DEM
+                    </strong>
+
+                    <small>
+                        Cao độ và địa hình
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ======================================
+         MODAL BÁO NGẬP
+         ====================================== -->
+
+    <div id="reportModal" class="modal">
+
+        <div class="modal-card">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Báo cáo điểm ngập
+                    </h2>
+
+                    <p>
+                        Cung cấp thông tin về
+                        tình trạng ngập tại vị trí
+                        của bạn
+                    </p>
+
+                </div>
+
+                <button id="btnCloseReport" class="close-btn" type="button">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="reportForm">
+
+                <div class="form-group">
+
+                    <label>
+                        Vị trí điểm ngập
+                    </label>
+
+                    <input id="reportAddress" type="text" placeholder="Ví dụ: 120 Tố Hữu">
+
+                    <div class="location-actions">
+
+                        <button id="btnCurrentLocation" type="button" class="location-btn">
+                            📍 Vị trí hiện tại
+                        </button>
+
+                        <button id="btnPickOnMap" type="button" class="map-location-btn">
+                            🗺 Chọn trên bản đồ
+                        </button>
+
+                    </div>
+
+                    <div id="locationInfo" class="location-info">
+                        Chưa chọn vị trí
+                    </div>
+
+                    <input id="reportLatitude" type="hidden">
+
+                    <input id="reportLongitude" type="hidden">
+
+                    <input id="reportAccuracy" type="hidden">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Mức độ ngập
+                    </label>
+
+                    <select required>
+
+                        <option value="">
+                            -- Chọn mức độ --
+                        </option>
+
+                        <option value="light">
+                            Ngập nhẹ
+                        </option>
+
+                        <option value="medium">
+                            Ngập trung bình
+                        </option>
+
+                        <option value="heavy">
+                            Ngập nặng
+                        </option>
+
+                        <option value="blocked">
+                            Không thể lưu thông
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Tình trạng giao thông
+                    </label>
+
+                    <select>
+
+                        <option value="normal">
+                            Bình thường
+                        </option>
+
+                        <option value="slow">
+                            Di chuyển chậm
+                        </option>
+
+                        <option value="congested">
+                            Ùn tắc
+                        </option>
+
+                        <option value="blocked">
+                            Không thể đi qua
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Ảnh hiện trường
+                    </label>
+
+                    <input type="file" accept="image/*">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Ghi chú
+                    </label>
+
+                    <textarea rows="4" placeholder="
+                            Mô tả thêm tình trạng ngập...
+                        "></textarea>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button id="btnCancelReport" type="button" class="cancel-btn">
+                        Hủy
+                    </button>
+
+                    <button type="submit" class="submit-btn">
+                        Gửi báo cáo
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================
+         JS
+         ====================================== -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

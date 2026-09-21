@@ -1,0 +1,276 @@
+{
+  "success": true,
+  "count": 45,
+  "data": [
+    {
+      "station_id": 52,
+      "name": "Hoàn Kiếm",
+      "address": "167 Phùng Hưng",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/52.png"
+    },
+    {
+      "station_id": 55,
+      "name": "Phường Láng",
+      "address": "165 Thái Hà",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/55.png"
+    },
+    {
+      "station_id": 56,
+      "name": "Kim Liên",
+      "address": "số 1 ngõ 11 Lương Đình Của",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/56.png"
+    },
+    {
+      "station_id": 57,
+      "name": "Thanh Xuân",
+      "address": "336 Nguyễn Trãi",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/57.png"
+    },
+    {
+      "station_id": 59,
+      "name": "Nghĩa Đô",
+      "address": "108 Cầu Giấy",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/59.png"
+    },
+    {
+      "station_id": 60,
+      "name": "Cầu Giấy",
+      "address": "Ngõ 37 Trần Quốc Hoàn",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/60.png"
+    },
+    {
+      "station_id": 61,
+      "name": "Cầu Giấy",
+      "address": "HỒ CV1",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/61.png"
+    },
+    {
+      "station_id": 63,
+      "name": "Phú Thượng",
+      "address": "685 Lạc Long Quân",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/63.png"
+    },
+    {
+      "station_id": 54,
+      "name": "Vĩnh Tuy",
+      "address": "Số 3 Mạc Thị Bưởi",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/54.png"
+    },
+    {
+      "station_id": 3,
+      "name": "Hoàn Kiếm",
+      "address": "110 N. H.HUÂN",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/3.png"
+    },
+    {
+      "station_id": 9,
+      "name": "Ba Đình",
+      "address": "1A TRẤN VŨ",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/9.png"
+    },
+    {
+      "station_id": 1,
+      "name": "Hai Bà Trưng",
+      "address": "65 VÂN HỒ III",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/1.png"
+    },
+    {
+      "station_id": 14,
+      "name": "Ô Chợ Dừa",
+      "address": "TB HỒ ĐỐNG ĐA",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/14.png"
+    },
+    {
+      "station_id": 17,
+      "name": "Văn Miếu - Quốc Tử Giám",
+      "address": "130 NGUYỄN KHUYẾN",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/17.png"
+    },
+    {
+      "station_id": 51,
+      "name": "Cửa Nam",
+      "address": "29 QUANG TRUNG",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/51.png"
+    },
+    {
+      "station_id": 16,
+      "name": "Khương Đình",
+      "address": "ĐẦM CHUỐI -BX.TRẠCH",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/16.png"
+    },
+    {
+      "station_id": 20,
+      "name": "Thanh Xuân",
+      "address": "NHÂN CHÍNH",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/20.png"
+    },
+    {
+      "station_id": 18,
+      "name": "Lĩnh Nam",
+      "address": "TB TRẦN PHÚ",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/18.png"
+    },
+    {
+      "station_id": 15,
+      "name": "Hoàng Liệt",
+      "address": "TB HỒ LINH ĐÀM",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/15.png"
+    },
+    {
+      "station_id": 6,
+      "name": "Yên Sở",
+      "address": "TB YÊN SỞ",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/6.png"
+    },
+    {
+      "station_id": 24,
+      "name": "Hoàng Mai",
+      "address": "59 Nguyễn Chính",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/24.png"
+    },
+    {
+      "station_id": 4,
+      "name": "Phú Diễn",
+      "address": "NVH MAI DỊCH",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/4.png"
+    },
+    {
+      "station_id": 13,
+      "name": "Nghĩa Đô",
+      "address": "HOÀNG QUỐC VIỆT",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/13.png"
+    },
+    {
+      "station_id": 8,
+      "name": "Tây Hồ",
+      "address": "CĐT HT A",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/8.png"
+    },
+    {
+      "station_id": 25,
+      "name": "Từ Liêm",
+      "address": "TB ĐỒNG BÔNG 1",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/25.png"
+    },
+    {
+      "station_id": 26,
+      "name": "Tây Mỗ",
+      "address": "HẦM CHUI ĐƯỜNG SẮT",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/26.png"
+    },
+    {
+      "station_id": 21,
+      "name": "Kiến Hưng",
+      "address": "TT5A LÔ 15 KĐT VĂN PHÚ",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/21.png"
+    },
+    {
+      "station_id": 23,
+      "name": "Yên Nghĩa",
+      "address": "222 KHU DV A",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/23.png"
+    },
+    {
+      "station_id": 19,
+      "name": "Bồ Đề",
+      "address": "41 Nguyễn Sơn",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/19.png"
+    },
+    {
+      "station_id": 5,
+      "name": "Phúc Lợi",
+      "address": "449B NGUYỄN VĂN LINH",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/5.png"
+    },
+    {
+      "station_id": 46,
+      "name": "Long Biên",
+      "address": "THẠCH BÀN",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/46.png"
+    },
+    {
+      "station_id": 47,
+      "name": "Long Biên",
+      "address": "21 TƯ ĐÌNH",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/47.png"
+    },
+    {
+      "station_id": 48,
+      "name": "Việt Hưng",
+      "address": "3 VẠN HẠNH",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/48.png"
+    },
+    {
+      "station_id": 49,
+      "name": "Phúc Lợi",
+      "address": "TT VĂN HOÁ PHƯỜNG",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/49.png"
+    },
+    {
+      "station_id": 50,
+      "name": "Bồ Đề",
+      "address": "270 Ngọc Thụy",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/50.png"
+    },
+    {
+      "station_id": 43,
+      "name": "Xã Gia Lâm",
+      "address": "1 THUẬN AN - TT TRÂU QUỲ",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/43.png"
+    },
+    {
+      "station_id": 44,
+      "name": "Xã Phù Đổng",
+      "address": "UBND THỊ TRẤN YÊN VIÊN",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/44.png"
+    },
+    {
+      "station_id": 41,
+      "name": "Xã Đông Anh",
+      "address": "UBND XÃ MAI LÂM",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/41.png"
+    },
+    {
+      "station_id": 10,
+      "name": "Xã Vĩnh Thanh",
+      "address": "HẢI BỐI",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/10.png"
+    },
+    {
+      "station_id": 36,
+      "name": "Xã Xuân Mai",
+      "address": "UBND THỊ TRẤN XUÂN MAI",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/36.png"
+    },
+    {
+      "station_id": 33,
+      "name": "Xã Mỹ Đức",
+      "address": "UBND THỊ TRẤN ĐẠI NGHĨA",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/33.png"
+    },
+    {
+      "station_id": 42,
+      "name": "Xã Thanh Trì",
+      "address": "375 NGỌC HỒI",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/42.png"
+    },
+    {
+      "station_id": 7,
+      "name": "Thanh Liệt",
+      "address": "ĐẬP THANH LIỆT - CẦU TÓ",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/7.png"
+    },
+    {
+      "station_id": 32,
+      "name": "Xã Phú Xuyên",
+      "address": "UBND THỊ TRẤN PHÚ XUYÊN",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/32.png"
+    },
+    {
+      "station_id": 45,
+      "name": "Thanh Liệt",
+      "address": "190 Triều Khúc",
+      "image_url": "https://thoatnuochanoi.vn/rain/images/45.png"
+    }
+  ]
+}
