@@ -15,14 +15,9 @@ API_URL = (
     "https://historical-forecast-api.open-meteo.com/v1/forecast"
 )
 
-# TEST TRƯỚC 1 THÁNG
-START_DATE = "2026-08-01"
-END_DATE = "2026-08-31"
+START_DATE = "2024-01-01"
+END_DATE = "2026-09-23"
 
-# Sau khi test OK có thể đổi:
-#
-# START_DATE = "2022-01-01"
-# END_DATE = "2026-09-19"
 
 BATCH_SIZE = 15
 
