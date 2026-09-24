@@ -721,49 +721,94 @@ async function loadRainStations() {
       icon: rainStationIcon,
     });
 
+    const stationId = station.hsdc_rain_id ?? station.station_id;
+
+    const rainImageUrl = `https://thoatnuochanoi.vn/rain/images/${stationId}.png?t=${Date.now()}`;
+
     marker.bindPopup(`
-        <div class="popup-title">
-          🌧
-          ${escapeHtml(station.name || "Trạm mưa HSDC")}
-        </div>
+  <div class="popup-title">
+    🌧
+    ${escapeHtml(station.name || "Trạm mưa HSDC")}
+  </div>
 
+  <div class="popup-row">
+    <b>Mã trạm:</b>
+
+    ${escapeHtml(stationId ?? "Không có")}
+  </div>
+
+  <div class="popup-row">
+    <b>Địa chỉ:</b>
+
+    ${escapeHtml(station.address || "Không có")}
+  </div>
+
+  <div class="popup-row">
+    <b>Tọa độ:</b>
+
+    ${lat.toFixed(6)},
+    ${lng.toFixed(6)}
+  </div>
+
+  ${
+    station.geocode_status
+      ? `
         <div class="popup-row">
-          <b>Mã trạm:</b>
+          <b>Geocode:</b>
 
-          ${escapeHtml(
-            station.hsdc_rain_id ?? station.station_id ?? "Không có",
-          )}
+          ${escapeHtml(station.geocode_status)}
         </div>
+      `
+      : ""
+  }
 
+  ${
+    stationId
+      ? `
         <div class="popup-row">
-          <b>Địa chỉ:</b>
-
-          ${escapeHtml(station.address || "Không có")}
+          <b>Lượng mưa HSDC:</b>
         </div>
 
-        <div class="popup-row">
-          <b>Tọa độ:</b>
-
-          ${lat.toFixed(6)},
-          ${lng.toFixed(6)}
+        <div style="
+          margin-top: 8px;
+          text-align: center;
+        ">
+          <img
+            class="hsdc-rain-image"
+            data-station-id="${stationId}"
+            src="${rainImageUrl}"
+            alt="Lượng mưa HSDC"
+            style="
+              max-width: 130px;
+              height: auto;
+            "
+          >
         </div>
 
-        ${
-          station.geocode_status
-            ? `
-              <div class="popup-row">
+        <div style="
+          margin-top: 4px;
+          font-size: 12px;
+          color: #666;
+        ">
+          Nguồn: HSDC
+        </div>
+      `
+      : ""
+  }
+`);
+    marker.on("popupopen", () => {
+      if (!stationId) {
+        return;
+      }
 
-                <b>
-                  Geocode:
-                </b>
+      const img = document.querySelector(
+        `.hsdc-rain-image[data-station-id="${stationId}"]`,
+      );
 
-                ${escapeHtml(station.geocode_status)}
-
-              </div>
-            `
-            : ""
-        }
-      `);
+      if (img) {
+        img.src = `https://thoatnuochanoi.vn/rain/images/${stationId}.png?t=${Date.now()}`;
+      }
+    });
 
     rainStationLayer.addLayer(marker);
   });

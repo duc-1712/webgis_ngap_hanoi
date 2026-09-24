@@ -16,6 +16,9 @@ const multer = require("multer");
 const { Pool } = require("pg");
 
 const { updateCurrentWeather } = require("./services/updateCurrentWeather");
+
+const cheerio = require("cheerio");
+const { syncHsdcRainStations } = require("./services/syncHsdcRainStations");
 // =====================================================
 // 2. APP
 // =====================================================
@@ -42,6 +45,27 @@ const pool = new Pool({
   // password: process.env.DB_PASSWORD || "MAT_KHAU_POSTGRES_CUA_BAN",
 });
 
+app.post(
+  "/api/sync-hsdc-rain-stations",
+
+  async (req, res) => {
+    try {
+      const result = await syncHsdcRainStations();
+
+      res.json({
+        success: true,
+        ...result,
+      });
+    } catch (error) {
+      console.error("SYNC HSDC RAIN ERROR:", error);
+
+      res.status(500).json({
+        success: false,
+        error: error.message,
+      });
+    }
+  },
+);
 // =====================================================
 // 4. API URL
 // =====================================================
@@ -81,6 +105,111 @@ app.get("/api/update-current-weather", async (req, res) => {
 });
 // frontend / ảnh upload
 app.use(express.static(path.join(__dirname, "public")));
+
+///
+app.get("/api/debug/hsdc-rain-stations", async (req, res) => {
+  try {
+    const url = "https://thoatnuochanoi.vn/rain/";
+
+    const response = await axios.get(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+          "AppleWebKit/537.36 Chrome/153 Safari/537.36",
+      },
+      timeout: 15000,
+    });
+
+    const $ = cheerio.load(response.data);
+
+    const stations = [];
+
+    $('img[src*="/rain/images/"]').each((index, element) => {
+      const img = $(element);
+
+      const src = img.attr("src") || "";
+
+      const match = src.match(/\/rain\/images\/(\d+)\.png/i);
+
+      const stationId = match ? Number(match[1]) : null;
+
+      // ======================================
+      // LEO DẦN LÊN DOM
+      // ======================================
+
+      let container = img.parent();
+
+      let name = "";
+      let address = "";
+
+      for (let level = 0; level < 6; level++) {
+        if (!container.length) {
+          break;
+        }
+
+        const text = container.text().replace(/\s+/g, " ").trim();
+
+        if (text.length > 0) {
+          const lines = container
+            .text()
+            .split("\n")
+            .map((x) => x.trim())
+            .filter(Boolean);
+
+          // tìm dòng có dạng địa chỉ (...)
+          const addressLine = lines.find(
+            (x) => x.startsWith("(") && x.endsWith(")"),
+          );
+
+          if (addressLine) {
+            address = addressLine.replace(/^\(/, "").replace(/\)$/, "").trim();
+
+            const addressIndex = lines.indexOf(addressLine);
+
+            if (addressIndex > 0) {
+              name = lines[addressIndex - 1];
+            }
+
+            break;
+          }
+        }
+
+        container = container.parent();
+      }
+
+      stations.push({
+        index: index + 1,
+
+        hsdc_rain_id: stationId,
+
+        name,
+
+        address,
+
+        image_url: src.startsWith("http")
+          ? src
+          : `https://thoatnuochanoi.vn${src}`,
+      });
+    });
+
+    res.json({
+      success: true,
+
+      total: stations.length,
+
+      stations,
+    });
+  } catch (error) {
+    console.error("HSDC RAIN ERROR:", error.message);
+
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+///
 
 // =====================================================
 // 6. CẤU HÌNH UPLOAD ẢNH
